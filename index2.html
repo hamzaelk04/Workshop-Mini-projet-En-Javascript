@@ -335,7 +335,7 @@
                         <option value="3">Sprint 3</option>
                     </select>
                     <select id="storyAssignee">
-                        <option value="">Non assigné</option>
+                        <option value="0">Non assigné</option>
                     </select>
                 </div>
                 <button onclick="addUserStory()">Créer Story</button>
@@ -387,7 +387,7 @@
          * - Appeler updateAssigneeSelect() pour mettre à jour le select d'assignation
          */
         function addCollaborator() {
-            // À IMPLÉMENTER
+            // À IMPLÉMENTER  
         }
 
         /**
@@ -409,8 +409,18 @@
          * - Générer les options: une option "Non assigné" + une option par collaborateur
          * - Mettre à jour le select avec innerHTML
          */
+        // created by Hamza
+        var select = document.getElementById('storyAssignee')
+
         function updateAssigneeSelect() {
-            // À IMPLÉMENTER
+            let count = 1
+            for (let i = 0; i < collaborators.length; i++) {
+                var option = document.createElement('option')
+                option.value = count
+                option.textContent = collaborators[i];
+                select.add(option);
+                count++
+            }
         }
 
         /**
