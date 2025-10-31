@@ -396,6 +396,7 @@
          * - Appeler updateCollaboratorsList() pour afficher la listegit 
          * - Appeler updateAssigneeSelect() pour mettre à jour le select d'assignation
          */
+        // created by mouad
         let n = 0;
         let cont = 0;
         function addCollaborator() {
@@ -406,6 +407,8 @@
             collaborators[n] = name;
             console.log(collaborators[n])
             document.getElementById('collaboratorName').value = '';
+            updateCollaboratorsList()
+            updateAssigneeSelect()
             n++;
         }
             /**
@@ -416,6 +419,7 @@
              * - Utiliser un style inline: background #667eea, color white, padding 8px 15px, border-radius 20px
              * - Injecter le HTML dans l'élément avec innerHTML
              */
+            // Created by yassir
             function updateCollaboratorsList() {
                 // À IMPLÉMENTER
 
@@ -424,7 +428,7 @@
                 collaboratorsList.style.padding = "8px 15px";
                 collaboratorsList.style.borderRadius = "20px";
                 collaboratorsList.style.width = "fit-content"
-                collaboratorsList.innerHTML += collaborators[n - 1] + "<br>";
+                collaboratorsList.innerHTML += collaborators[n] + "<br>";
             }
 
             /**
@@ -436,10 +440,10 @@
              */
             // created by Hamza
             var select = document.getElementById('storyAssignee')
-
+            
             function updateAssigneeSelect() {
                 let count = 1
-                for (let i = 0; i < collaborators.length; i++) {
+                for (let i = n; i < collaborators.length; i++) {
                     var option = document.createElement('option')
                     option.value = count
                     option.textContent = collaborators[i];
