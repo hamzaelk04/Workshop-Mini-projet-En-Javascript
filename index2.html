@@ -322,7 +322,7 @@
                 <h3>👤 Ajouter un Collaborateur</h3>
                 <div class="input-group">
                     <input type="text" id="collaboratorName" placeholder="Nom du collaborateur">
-                    <button onclick="addCollaborator()">Ajouter</button>
+                    <button onclick="addCollaborator()" id="click">Ajouter</button>
                 </div>
                 <div id="collaboratorsList"></div>
             </div>
@@ -342,7 +342,7 @@
                         <option value="3">Sprint 3</option>
                     </select>
                     <select id="storyAssignee">
-                        <option value="">Non assigné</option>
+                        <option value="0">Non assigné</option>
                     </select>
                 </div>
                 <button onclick="addUserStory()">Créer Story</button>
@@ -382,6 +382,9 @@
         let userStories = [];
         let boardStories = [];
         let storyIdCounter = 1;
+        const collaboratorName = document.getElementById("collaboratorName");
+        const collaboratorsList = document.getElementById("collaboratorsList");
+        const click = document.getElementById("click");
 
         /**
          * Fonction pour ajouter un nouveau collaborateur à l'équipe
@@ -398,13 +401,18 @@
         function addCollaborator() {
             // À IMPLÉMENTER
             let name = document.getElementById('collaboratorName').value;
-            cont = 1;
-            console.log()
-            collaborators[n] = name;
-            console.log(collaborators[n])
-            document.getElementById('collaboratorName').value = '';
-            n++;
+                cont=1;
+               console.log()
+                collaborators[n] = name;
+                console.log(collaborators[n])
+                document.getElementById('collaboratorName').value = '';
+ n++;
+         let n =0;
+        function addCollaborator() {
+          
+            // À IMPLÉMENTER  
         }
+        
 
         /**
          * Fonction pour afficher la liste des collaborateurs dans l'interface
@@ -414,10 +422,17 @@
          * - Utiliser un style inline: background #667eea, color white, padding 8px 15px, border-radius 20px
          * - Injecter le HTML dans l'élément avec innerHTML
          */
-        function updateCollaboratorsList() {
+       function updateCollaboratorsList() {
             // À IMPLÉMENTER
-        }
 
+            collaboratorsList.style.background = "#667eea";
+            collaboratorsList.style.color = "white";
+            collaboratorsList.style.padding = "8px 15px";
+            collaboratorsList.style.borderRadius = "20px";
+            collaboratorsList.style.width = "fit-content"
+            collaboratorsList.innerHTML += collaborators[n-1] + "<br>";
+         }
+    
         /**
          * Fonction pour mettre à jour la liste déroulante des assignés
          * TODO:
@@ -425,8 +440,18 @@
          * - Générer les options: une option "Non assigné" + une option par collaborateur
          * - Mettre à jour le select avec innerHTML
          */
+        // created by Hamza
+        var select = document.getElementById('storyAssignee')
+
         function updateAssigneeSelect() {
-            // À IMPLÉMENTER
+            let count = 1
+            for (let i = 0; i < collaborators.length; i++) {
+                var option = document.createElement('option')
+                option.value = count
+                option.textContent = collaborators[i];
+                select.add(option);
+                count++
+            }
         }
 
         /**
