@@ -316,19 +316,15 @@
         <p>Gérez vos projets avec agilité</p>
       </div>
 
-      <div class="controls">
-        <div class="control-group">
-          <h3>👤 Ajouter un Collaborateur</h3>
-          <div class="input-group">
-            <input
-              type="text"
-              id="collaboratorName"
-              placeholder="Nom du collaborateur"
-            />
-            <button onclick="addCollaborator()" id="click">Ajouter</button>
-          </div>
-          <div id="collaboratorsList"></div>
-        </div>
+        <div class="controls">
+            <div class="control-group">
+                <h3>👤 Ajouter un Collaborateur</h3>
+                <div class="input-group">
+                    <input type="text" id="collaboratorName" placeholder="Nom du collaborateur">
+                    <button onclick="addCollaborator()" id="click">Ajouter</button>
+                </div>
+                <div id="collaboratorsList"></div>
+            </div>
 
         <div class="control-group">
           <h3>📝 Ajouter une User Story</h3>
@@ -388,13 +384,13 @@
     </div>
 
     <script>
-      let collaborators = [];
-      let userStories = [];
-      let boardStories = [];
-      let storyIdCounter = 1;
-      const collaboratorName = document.getElementById("collaboratorName");
-      const collaboratorsList = document.getElementById("collaboratorsList");
-      const click = document.getElementById("click");
+        let collaborators = [];
+        let userStories = [];
+        let boardStories = [];
+        let storyIdCounter = 1;
+        const collaboratorName = document.getElementById("collaboratorName");
+        const collaboratorsList = document.getElementById("collaboratorsList");
+        const click = document.getElementById("click");
 
       /**
        * Fonction pour ajouter un nouveau collaborateur à l'équipe
@@ -488,9 +484,36 @@
        * - Vider les champs titre et description
        * - Appeler renderSprintBacklog() pour actualiser l'affichage
        */
-      function addUserStory() {
+        function addUserStory() {
         // À IMPLÉMENTER
+        const storyTitle = document.getElementById("storyTitle");
+        const storyDescription = document.getElementById("storyDescription");
+        const storySprint = document.getElementById("storySprint");
+        const storyAssignee = document.getElementById("storyAssignee");
+
+        if(storyTitle.value === ""){
+            alert("titre est obliger")
+        }
+        if(storyDescription.value === ""){
+            alert("discription est obliger")
+        }
+        else{
+          const story = {
+          id: storyIdCounter++,
+          title: storyTitle.value,
+          description: storyDescription.value,
+          sprint: storySprint.value,
+          assignee: storyAssignee.value,
+          status: "backlog",
+        }
+        userStories.push(story);
+        storyTitle.value.textContent = "";
+        storyDescription.value.textContent = "";        
       }
+        renderSprintBacklog();
+
+    }
+
 
       /**
        * Fonction pour afficher le Sprint Backlog avec toutes les stories par sprint
