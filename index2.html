@@ -481,7 +481,7 @@
         }
         else{
           const story = {
-          id: storyidCuonter++,
+          id: storyIdCounter++,
           title: storyTitle.value,
           description: storyDescription.value,
           sprint: storySprint.value,
@@ -490,9 +490,10 @@
         }
         userStories.push(story);
         storyTitle.value.textContent = "";
-        storyDescription.value.textContent = "";
-        renderSprintBacklog();
+        storyDescription.value.textContent = "";        
       }
+        renderSprintBacklog();
+
     }
 
       /**
